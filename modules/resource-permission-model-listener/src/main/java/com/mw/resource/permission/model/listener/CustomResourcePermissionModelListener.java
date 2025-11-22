@@ -80,9 +80,16 @@ public class CustomResourcePermissionModelListener extends BaseModelListener<Res
         _log.info("Matched DLFolder Site Member role...");
         
         //Set to VIEW permission only
-        resourcePermission.setActionIds(_viewFolderResourceAction.getBitwiseValue());
         
-        _log.info("Done...");
+        if (resourcePermission.hasAction(_viewFolderResourceAction)) {
+            resourcePermission.setActionIds(_viewFolderResourceAction.getBitwiseValue());
+            
+            _log.info("Overrode permissions for Site Member for " + resourcePermission.getPrimKey());   
+        } else {
+        	resourcePermission.setActionIds(0);
+        	
+            _log.info("Removed all permissions for Site Member for " + resourcePermission.getPrimKey());   
+        }        
     }
 	
 	@Reference
