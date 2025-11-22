@@ -1,6 +1,6 @@
 ## Introduction ##
 - This 'proof of concept' is designed to remove all Permissions other than the VIEW Permission from the Site Member Role, for Documents & Media Folders.
-- It will update the Permissions when a Documents & Media Folder is created OR when the Permissions of an existing Documents & Media Folder are updated.
+- It will update the Permissions when a new Documents & Media Folder is created OR when the Site Member Permissions of an existing Documents & Media Folder are updated.
 - If the Site Member Role already has the VIEW Permission, it will be retained, but all other Permissions will be removed.
 - If the Site Member Role doesn't already have the VIEW Permission then it will NOT be assigned, and ALL Permissions will be removed.
 
