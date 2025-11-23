@@ -13,7 +13,7 @@
 	- If the Site Member Role already has the VIEW Permission, it will be retained, but all other Permissions will be removed.
 	- If the Site Member Role doesn't already have the VIEW Permission then it will NOT be assigned, and ALL Permissions will be removed.
 	- Note that a ResourcePermissions update for a specific Role is only triggered if the permissions for the Role are actually modified. Opening the Permissions screen and clicking Save will not trigger a ResourcePermissions update.
-- **also note that custom code will NOT remove Permissions assigned using Control Panel > Roles > Site Roles > Site Member > Define Permissions.**
+- **Note that this custom module CANNOT remove Permissions assigned using Control Panel > Roles > Site Roles > Site Member > Define Permissions.**
 
 ## Implementation ##
 - The module contains a ModelListener OSGi module for the ResourcePermission Model with the onBeforeCreate and onBeforeUpdate methods implemented.
