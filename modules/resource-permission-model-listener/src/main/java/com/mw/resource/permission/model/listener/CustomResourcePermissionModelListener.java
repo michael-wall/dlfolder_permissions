@@ -56,7 +56,13 @@ public class CustomResourcePermissionModelListener extends BaseModelListener<Res
     }
 
     public void updateDLFolderSiteMemberPermissions(ResourcePermission resourcePermission) {
-    	        
+        if (Validator.isNull(resourcePermission.getName())) return;
+        if (Validator.isNull(resourcePermission.getPrimKey()) || resourcePermission.getPrimKey().equalsIgnoreCase("0")) return;
+    	
+        // Only run for DLFolder and Site Member role.
+        if (!resourcePermission.getName().equalsIgnoreCase(DLFolder.class.getName())) return; 
+    	
+    	
 		if (Validator.isNull(_viewFolderResourceAction)) {        	
 			_log.info("DLFolder VIEW action not found, no changes will be made.");
 			
@@ -74,7 +80,6 @@ public class CustomResourcePermissionModelListener extends BaseModelListener<Res
         }   
         
         // Only run for DLFolder and Site Member role.
-        if (!resourcePermission.getName().equalsIgnoreCase(DLFolder.class.getName())) return;
         if (resourcePermission.getRoleId() != siteMemberRole.getRoleId()) return;
         
         _log.info("Matched DLFolder Site Member role...");
